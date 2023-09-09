@@ -74,7 +74,32 @@ sudo systemctl daemon-reload
 ```
 (image2)
 
-4. Install NFS server, configure it to start on reboot and make sure it is u and running
+## STEP 2 –  CONFIGURE THE DATABASE SERVER
+
+1. Install MySQL server
+
+**`sudo apt install mysql`**
+
+2. Create a database and name it `tooling`
+```
+sudo mysql
+create database tooling;
+```
+
+3. Create a database user and name it `webaccess`
+
+**`create user 'webaccess'@'172.31.80.0/20' identified by 'password';`**
+
+4. Grant permission to webaccess user on tooling database to do anything only from the webservers subnet cidr
+
+**`grant all privileges on tooling.* to 'webaccess'@'172.31.80.0/20';`**
+
+(image 3)
+
+## STEP 3 –  CONFIGURE THE NFS SERVER UTILITIES
+
+
+1. Install NFS server, configure it to start on reboot and make sure it is u and running
 
 ```
 sudo yum -y update
@@ -88,7 +113,7 @@ sudo systemctl enable nfs-server.service
 sudo systemctl status nfs-server.service
 ```
 
-5. Export the mounts for webservers’ subnet cidr to connect as clients. For simplicity, you will install your all three Web Servers inside the same subnet, but in production set up you would probably want to separate each tier inside its own subnet for higher level of security.
+2. Export the mounts for webservers’ subnet cidr to connect as clients. For simplicity, you will install your all three Web Servers inside the same subnet, but in production set up you would probably want to separate each tier inside its own subnet for higher level of security.
 To check your subnet cidr – open your EC2 details in AWS web console and locate ‘Networking’ tab and open a Subnet link:
 
 Install Remi’s repository, Apache and PHP
@@ -119,16 +144,16 @@ sudo systemctl restart httpd
 
 ### **Repeat steps 1-5 for another 2 Web Servers.**
 
-6. Verify that Apache files and directories are available on the Web Server in /var/www and also on the NFS server in /mnt/apps. If you see the same files – it means NFS is mounted correctly. You can try to create a new file touch test.txt from one server and check if the same file is accessible from other Web Servers.
+3. Verify that Apache files and directories are available on the Web Server in /var/www and also on the NFS server in /mnt/apps. If you see the same files – it means NFS is mounted correctly. You can try to create a new file touch test.txt from one server and check if the same file is accessible from other Web Servers.
 
-7. Locate the log folder for Apache on the Web Server and mount it to NFS server’s export for logs. Repeat step 4 under the 'prepare web servers' to make sure the mount point will persist after reboot.
+4. Locate the log folder for Apache on the Web Server and mount it to NFS server’s export for logs. Repeat step 4 under the 'prepare web servers' to make sure the mount point will persist after reboot.
 
 `sudo vi /etc/fstab`
 
-8. Fork the tooling source code from Darey.io Github Account to your Github account.
+5. Fork the tooling source code from Darey.io Github Account to your Github account.
 
 
-9. Deploy the tooling website’s code to the Webserver. Ensure that the html folder from the repository is deployed to `/var/www/html`
+6. Deploy the tooling website’s code to the Webserver. Ensure that the html folder from the repository is deployed to `/var/www/html`
 
 
 **Note 1: Do not forget to open TCP port 80 on the Web Server.**
