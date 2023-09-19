@@ -111,7 +111,7 @@ Update the repository
 
 Install wget, Apache and it’s dependencies
 
-`sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json`
+` sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json `
 
 Start Apache
 
