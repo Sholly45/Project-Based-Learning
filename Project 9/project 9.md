@@ -14,12 +14,14 @@ sudo apt update
 sudo apt install default-jdk-headless
 ```
 
+
 3. **Install Jenkins**
 
 ```
 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
     /etc/apt/sources.list.d/jenkins.list'
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5BA31D57EF5975CA
 sudo apt update
 sudo apt-get install jenkins
 ```
@@ -63,6 +65,8 @@ In this part, you will learn how to configure a simple Jenkins job/project (thes
 ![image 1](https://github.com/Sholly45/Project-Based-Learning/blob/main/Project%209/images/9.PNG)
 
 2. Go to Jenkins web console, click “New Item” and create a “Freestyle project”
+
+
 3. Click "Configure" your job/project and add these two configurations
 
 Configure triggering the job from GitHub webhook:
