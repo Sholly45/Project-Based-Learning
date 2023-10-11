@@ -173,7 +173,7 @@ sudo chmod -R 777 /mnt
 sudo chown -R nobody:nobody /mnt
 ```
 
-![image 1](https://github.com/Sholly45/Project-Based-Learning/blob/main/Project%209/images/18.PNG
+![image 1](https://github.com/Sholly45/Project-Based-Learning/blob/main/Project%209/images/18.PNG)
 
 
 ## THANK YOU!!!
