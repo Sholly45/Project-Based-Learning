@@ -65,7 +65,7 @@ In this part, you will learn how to configure a simple Jenkins job/project (thes
 ![image 1](https://github.com/Sholly45/Project-Based-Learning/blob/main/Project%209/images/9.PNG)
 
 2. Go to Jenkins web console, click “New Item” and create a “Freestyle project”
-
+![image 1](https://github.com/Sholly45/Project-Based-Learning/blob/main/Project%209/images/16.PNG)
 
 3. Click "Configure" your job/project and add these two configurations
 
@@ -173,7 +173,7 @@ sudo chmod -R 777 /mnt
 sudo chown -R nobody:nobody /mnt
 ```
 
-![change permission](./Images/change%20permissions.PNG)
+![image 1](https://github.com/Sholly45/Project-Based-Learning/blob/main/Project%209/images/18.PNG
 
 
 ## THANK YOU!!!
